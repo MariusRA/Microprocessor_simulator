@@ -1,0 +1,11 @@
+
+	Reguli de scriere ale fisierului .asm
+
+-comentariile se marcheaza cu "$$" (ex. mov R1, 1$$ul)
+-instructiunile pot fi scrise atat upper cat si lower case, cat si combinatii de upper si lower case
+-vom defini ca si directive .data si .code, fisierul incepe cu directiva .data si trebuie sa contina si
+	directiva .code inainte sa incepem sa scriem instructiuni (*)
+-definirea de variabile in zona de date se face cu [NUME_VARIABILA] [TIP] [VALOARE] (*)
+-TIP poate fi db, dw, dd (*)
+-definirea etichetelor se face cu [NUME_ETICHETA]:, si se scriu pe rand nou, separat, SINGURE
+-programul incepe cu eticheta "start:", si se incheie cu "end start"
