@@ -1,0 +1,10 @@
+C:\Users\popa_\Desktop\Proiect Microprocesor\Proiect\Assembler\Assembler\bin\Debug\Assembler.exe.config
+C:\Users\popa_\Desktop\Proiect Microprocesor\Proiect\Assembler\Assembler\bin\Debug\Assembler.exe
+C:\Users\popa_\Desktop\Proiect Microprocesor\Proiect\Assembler\Assembler\bin\Debug\Assembler.pdb
+C:\Users\popa_\Desktop\Proiect Microprocesor\Proiect\Assembler\Assembler\obj\Debug\Assembler.csprojAssemblyReference.cache
+C:\Users\popa_\Desktop\Proiect Microprocesor\Proiect\Assembler\Assembler\obj\Debug\Assembler.Properties.Resources.resources
+C:\Users\popa_\Desktop\Proiect Microprocesor\Proiect\Assembler\Assembler\obj\Debug\Assembler.csproj.GenerateResource.cache
+C:\Users\popa_\Desktop\Proiect Microprocesor\Proiect\Assembler\Assembler\obj\Debug\Assembler.csproj.CoreCompileInputs.cache
+C:\Users\popa_\Desktop\Proiect Microprocesor\Proiect\Assembler\Assembler\obj\Debug\Assembler.exe
+C:\Users\popa_\Desktop\Proiect Microprocesor\Proiect\Assembler\Assembler\obj\Debug\Assembler.pdb
+C:\Users\popa_\Desktop\Proiect Microprocesor\Proiect\Assembler\Assembler\obj\Debug\Assembler.assemblerForm.resources
