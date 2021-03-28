@@ -27,7 +27,7 @@ namespace Assembler
         private void loadFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string filePath = Utility.loadFile();
-            List<String> asmElements = Utility.parseFile(outputTB, filePath);
+            List<List<String>> asmMatrix = Utility.parseFile(outputTB, filePath);
             // Dictionary<String, String> instructions = Utility.instructionsOpcode();
 
             Dictionary<String, String> instructions = new Dictionary<String, String>()

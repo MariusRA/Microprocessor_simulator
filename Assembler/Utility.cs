@@ -33,12 +33,15 @@ namespace Assembler
             return filePath;
         }
 
-        public static List<String> parseFile(RichTextBox rtb, string filePath)
+        public static List<List<String>> parseFile(RichTextBox rtb, string filePath)
         {
             //start parsing the.asm file
             int lineCounter = 0;
 
-            List<String> asmElements = new List<String>();
+            
+            List <List<String>> asmMatrix = new List<List<String>>();
+         
+
             TextFieldParser parser = new TextFieldParser(filePath);
 
             rtb.Text = "";
@@ -51,26 +54,32 @@ namespace Assembler
             while (!parser.EndOfData)
             {
                 string[] asmFields = parser.ReadFields();
+                List<String> asmRow = new List<String>();
 
                 foreach (string s in asmFields)
                 {
                     if (!s.Equals(""))
                     {
-                        asmElements.Add(s);
+                        asmRow.Add(s);
                     }
                 }
+                asmMatrix.Add(asmRow);
                 //Counting the number of lines stored in ASM file 
                 lineCounter++;
             }
 
             parser.Close();
 
-            foreach (String s in asmElements)
+            for(int i = 0; i < asmMatrix.Count(); i++)
             {
-                rtb.Text += s + Environment.NewLine;
+                for(int j=0; j < asmMatrix[i].Count(); j++)
+                {
+                    rtb.Text += asmMatrix[i][j] + " ";
+                }
+                rtb.Text += Environment.NewLine;
             }
-
-            return asmElements;
+          
+            return asmMatrix;
         }
 
         //for future 
