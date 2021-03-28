@@ -81,6 +81,7 @@ namespace Assembler
                 {"POPFLAG","1110000000010010"}
             };
 
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
