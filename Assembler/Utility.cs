@@ -19,7 +19,7 @@ namespace Assembler
 
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.InitialDirectory = @"C:\";
+                openFileDialog.InitialDirectory = @"F:\";
                 openFileDialog.Filter = "Assembly files (*.asm)|*.asm|Text files (*.txt)|*.txt|All files (*.*)|*.*";
                 openFileDialog.FilterIndex = 1;
                 openFileDialog.RestoreDirectory = true;
@@ -76,21 +76,14 @@ namespace Assembler
                 {
                     rtb.Text += asmMatrix[i][j] + " ";
                 }
+                
                 rtb.Text += Environment.NewLine;
             }
           
             return asmMatrix;
         }
 
-        //for future 
-        public static Dictionary<String, String> instructionsOpcode()
-        {
-            
-            Dictionary<String, String> instructions = new Dictionary<String, String>();
-
-            FileInfo fileInfo = new FileInfo("instruction_opcodes.txt");
-
-            return instructions;
-        }
+         
+       
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using Microsoft.VisualBasic.FileIO;
@@ -8,29 +9,7 @@ namespace Assembler
 {
     public partial class assemblerForm : Form
     {
-
-        public assemblerForm()
-        {
-            InitializeComponent();
-        }
-
-        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void loadFileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string filePath = Utility.loadFile();
-            List<List<String>> asmMatrix = Utility.parseFile(outputTB, filePath);
-            // Dictionary<String, String> instructions = Utility.instructionsOpcode();
-
-            Dictionary<String, String> instructions = new Dictionary<String, String>()
+        public static Dictionary<String, String> instructions = new Dictionary<String, String>()
             {
                 {"MOV","0000"},
                 {"ADD","0001"},
@@ -80,6 +59,46 @@ namespace Assembler
                 {"PUSHFLAG","1110000000010001"},
                 {"POPFLAG","1110000000010010"}
             };
+        public assemblerForm()
+        {
+            InitializeComponent();
+        }
+
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void loadFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string filePath = Utility.loadFile();
+            List<List<String>> asmMatrix = Utility.parseFile(outputTB, filePath);
+
+
+
+            for (int i = 0; i < asmMatrix.Count; i++)
+            {
+                string firstElem = asmMatrix[i][0].ToUpper();
+                if (instructions.ContainsKey(firstElem))
+                {
+                    asmMatrix[i][0] = instructions[firstElem];
+                }
+
+            }
+
+            for (int i = 0; i < asmMatrix.Count(); i++)
+            {
+                for (int j = 0; j < asmMatrix[i].Count(); j++)
+                {
+                    outputTB.Text += asmMatrix[i][j] + " ";
+                }
+                outputTB.Text += Environment.NewLine;
+            }
 
         }
 
