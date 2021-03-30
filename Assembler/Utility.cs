@@ -75,17 +75,6 @@ namespace Assembler
             }
 
             parser.Close();
-
-            for(int i = 0; i < asmMatrix.Count(); i++)
-            {
-                for(int j=0; j < asmMatrix[i].Count(); j++)
-                {
-                    rtb.Text += asmMatrix[i][j] + " ";
-                }
-                
-                rtb.Text += Environment.NewLine;
-            }
-          
             return asmMatrix;
         }
 
@@ -120,6 +109,9 @@ namespace Assembler
             return result;
         }
          
-       
+        public static void convertToBinary(ref List<List<String>> asmElements,ref List<List<String>> codedAsm)
+        {
+           
+        }
     }
 }
