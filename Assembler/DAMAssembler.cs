@@ -87,6 +87,58 @@ namespace Assembler
                 if (instructions.ContainsKey(firstElem))
                 {
                     asmMatrix[i][0] = instructions[firstElem];
+
+                    switch (asmMatrix[i].Count())
+                    {
+                        case 3: // if the instruction has 2 operands
+                            var secondElem = asmMatrix[i][1].ToUpper();
+                            asmMatrix[i].Insert(1, Utility.checkAdressingMode(secondElem));
+                            if (asmMatrix[i][2].Contains("R")) // if the first operand is a register
+                            {
+                                if (asmMatrix[i][2].Contains("("))
+                                {
+                                    if (asmMatrix[i][2][0].Equals('(') && asmMatrix[i][2][asmMatrix[i][2].Length - 1].Equals(')'))
+                                    {
+                                        char[] delimiters = { '(', ')', 'R' };
+                                        var reg = asmMatrix[i][2].Split(delimiters);
+                                        asmMatrix[i][2] = System.Convert.ToString(Convert.ToInt32(reg[2]), 2);
+                                        while (asmMatrix[i][2].Length < 4) // 'binary' value must be represented on 4 bits
+                                        {
+                                            asmMatrix[i][2] = "0" + asmMatrix[i][2];
+                                        }
+                                    }
+                                    else
+                                    {
+                                        
+                                    }
+                                }
+                                else
+                                {
+                                    var regNo = asmMatrix[i][2].Split('R');
+                                    asmMatrix[i][2] = System.Convert.ToString(Convert.ToInt32(regNo[1]), 2);
+                                    while (asmMatrix[i][2].Length < 4) // 'binary' value must be represented on 4 bits
+                                    {
+                                        asmMatrix[i][2] = "0" + asmMatrix[i][2];
+                                    }
+                                }
+                            }
+                            //var thirdElem = asmMatrix[i][3].ToUpper();
+                            //asmMatrix[i].Insert(3, Utility.checkAdressingMode(thirdElem));
+                            //if (asmMatrix[i][4].Contains("R")) // if the second operand is a register
+                            //{
+                            //    var regNo = asmMatrix[i][4].Split('R'); 
+                            //    asmMatrix[i][4] = System.Convert.ToString(Convert.ToInt32(regNo[1]), 2);
+                            //    while (asmMatrix[i][4].Length < 4) // 'binary' value must be represented on 4 bits
+                            //    {
+                            //        asmMatrix[i][4] = "0" + asmMatrix[i][4];
+                            //    }
+                            //}
+                            break;
+                    }
+
+                    
+
+
                 }
 
             }
@@ -99,7 +151,7 @@ namespace Assembler
                 }
                 outputTB.Text += Environment.NewLine;
             }
-
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)

@@ -46,7 +46,7 @@ namespace Assembler
 
             rtb.Text = "";
 
-            String[] delimiters = { ":", ",", " ", "(", ")" };
+            String[] delimiters = { ":", ",", " " };
 
             parser.TextFieldType = FieldType.Delimited;
             parser.SetDelimiters(delimiters);
@@ -58,12 +58,18 @@ namespace Assembler
 
                 foreach (string s in asmFields)
                 {
+                    if (s.Contains(";")) { 
+                        break;
+                    }
                     if (!s.Equals(""))
                     {
                         asmRow.Add(s);
                     }
                 }
-                asmMatrix.Add(asmRow);
+                if (asmRow.Count != 0) {
+                    asmMatrix.Add(asmRow);
+                }
+                
                 //Counting the number of lines stored in ASM file 
                 lineCounter++;
             }
@@ -83,6 +89,36 @@ namespace Assembler
             return asmMatrix;
         }
 
+        public static String checkAdressingMode(string operand)
+        {
+            string result="";
+
+            if (operand.Contains("R"))
+            {
+                if (operand.Contains("("))
+                {
+                    if (operand[0].Equals('(') && operand[operand.Length-1].Equals(')'))
+                    {
+                        result = "10";
+                    }
+                    else
+                    {
+                        result = "11";
+                    }
+                }
+                else
+                {
+                    result = "01";
+                }
+            }
+            else
+            {
+                result = "00";
+            }
+
+
+            return result;
+        }
          
        
     }
