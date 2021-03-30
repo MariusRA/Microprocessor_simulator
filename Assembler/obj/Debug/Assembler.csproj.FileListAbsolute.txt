@@ -18,13 +18,3 @@ F:\Microprocessor_simulator\Assembler\obj\Debug\Assembler.csproj.GenerateResourc
 F:\Microprocessor_simulator\Assembler\obj\Debug\Assembler.csproj.CoreCompileInputs.cache
 F:\Microprocessor_simulator\Assembler\obj\Debug\Assembler.exe
 F:\Microprocessor_simulator\Assembler\obj\Debug\Assembler.pdb
-C:\Users\popa_\Desktop\Facultate\An3Sem2\ProiectMicroproc\Microprocessor_simulator\Assembler\bin\Debug\Assembler.exe.config
-C:\Users\popa_\Desktop\Facultate\An3Sem2\ProiectMicroproc\Microprocessor_simulator\Assembler\bin\Debug\Assembler.exe
-C:\Users\popa_\Desktop\Facultate\An3Sem2\ProiectMicroproc\Microprocessor_simulator\Assembler\bin\Debug\Assembler.pdb
-C:\Users\popa_\Desktop\Facultate\An3Sem2\ProiectMicroproc\Microprocessor_simulator\Assembler\obj\Debug\Assembler.csprojAssemblyReference.cache
-C:\Users\popa_\Desktop\Facultate\An3Sem2\ProiectMicroproc\Microprocessor_simulator\Assembler\obj\Debug\Assembler.assemblerForm.resources
-C:\Users\popa_\Desktop\Facultate\An3Sem2\ProiectMicroproc\Microprocessor_simulator\Assembler\obj\Debug\Assembler.Properties.Resources.resources
-C:\Users\popa_\Desktop\Facultate\An3Sem2\ProiectMicroproc\Microprocessor_simulator\Assembler\obj\Debug\Assembler.csproj.GenerateResource.cache
-C:\Users\popa_\Desktop\Facultate\An3Sem2\ProiectMicroproc\Microprocessor_simulator\Assembler\obj\Debug\Assembler.csproj.CoreCompileInputs.cache
-C:\Users\popa_\Desktop\Facultate\An3Sem2\ProiectMicroproc\Microprocessor_simulator\Assembler\obj\Debug\Assembler.exe
-C:\Users\popa_\Desktop\Facultate\An3Sem2\ProiectMicroproc\Microprocessor_simulator\Assembler\obj\Debug\Assembler.pdb
