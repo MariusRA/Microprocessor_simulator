@@ -11,7 +11,7 @@ namespace Assembler
 {
     class Utility
     {
-       
+
         public static string loadFile()
         {
             //selecting the file we want to parse
@@ -38,9 +38,9 @@ namespace Assembler
             //start parsing the.asm file
             int lineCounter = 0;
 
-            
-            List <List<String>> asmMatrix = new List<List<String>>();
-         
+
+            List<List<String>> asmMatrix = new List<List<String>>();
+
 
             TextFieldParser parser = new TextFieldParser(filePath);
 
@@ -58,7 +58,8 @@ namespace Assembler
 
                 foreach (string s in asmFields)
                 {
-                    if (s.Contains(";")) { 
+                    if (s.Contains(";"))
+                    {
                         break;
                     }
                     if (!s.Equals(""))
@@ -66,10 +67,11 @@ namespace Assembler
                         asmRow.Add(s);
                     }
                 }
-                if (asmRow.Count != 0) {
+                if (asmRow.Count != 0)
+                {
                     asmMatrix.Add(asmRow);
                 }
-                
+
                 //Counting the number of lines stored in ASM file 
                 lineCounter++;
             }
@@ -78,15 +80,15 @@ namespace Assembler
             return asmMatrix;
         }
 
-        public static String checkAdressingMode(string operand)
+        public static String getAdressingMode(string operand)
         {
-            string result="";
+            string result = "";
 
             if (operand.Contains("R"))
             {
                 if (operand.Contains("("))
                 {
-                    if (operand[0].Equals('(') && operand[operand.Length-1].Equals(')'))
+                    if (operand[0].Equals('(') && operand[operand.Length - 1].Equals(')'))
                     {
                         result = "10";
                     }
@@ -108,10 +110,85 @@ namespace Assembler
 
             return result;
         }
-         
-        public static void convertToBinary(ref List<List<String>> asmElements,ref List<List<String>> codedAsm)
+
+        public static void displayCodifiedInstructions(List<List<String>> binaryMatrix, RichTextBox outT)
         {
-           
+            for (int i = 0; i < binaryMatrix.Count(); i++)
+            {
+                for (int j = 0; j < binaryMatrix[i].Count(); j++)
+                {
+                    outT.Text += binaryMatrix[i][j] + " ";
+                }
+                outT.Text += Environment.NewLine;
+            }
         }
+
+        public static void displayASMFileContents(List<List<String>> matrix, RichTextBox outT)
+        {
+            for (int i = 0; i < matrix.Count(); i++)
+            {
+                for (int j = 0; j < matrix[i].Count(); j++)
+                {
+                    outT.Text += matrix[i][j] + " ";
+                }
+                outT.Text += Environment.NewLine;
+            }
+            outT.Text += Environment.NewLine;
+        }
+
+        public static void putConstantValues(List<List<String>> matrix, List<string> values, List<int> indexes)
+        {
+            for (int i = 0; i < indexes.Count(); i++)
+            {
+                List<string> val = new List<string>();
+                val.Add(values[i]);
+                matrix.Insert(indexes[i], val);
+                for (int j = i + 1; j < indexes.Count(); j++)
+                {
+                    indexes[j]++;
+                }
+            }
+        }
+
+        public static bool checkCorrectRegisterNumber(string numberAsString, int line)
+        {
+            int number = Int32.Parse(numberAsString);
+            if (number < 0 || number > 15)
+            {
+                string errText = "Register with number " + numberAsString + " does not exist (line: " + (line + 1) + " )";
+                MessageBox.Show(errText, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return false;
+        }
+
+        public static List<string> matrixToList(List<List<String>> matrix)
+        {
+            List<string> mToL = new List<string>();
+
+            foreach (var v in matrix)
+            {
+                for (int i = 1; i < v.Count(); i++)
+                {
+                    v[0] += v[i];
+                }
+                mToL.Add(v[0]);
+            }
+            return mToL;
+        }
+
+        public static void binaryFileWriter(List<string> matrix, string fileName)
+        {
+            fileName = fileName.Replace(".asm", ".bin");
+            using (BinaryWriter writer = new BinaryWriter(File.Open(fileName, FileMode.Create)))
+            {
+                foreach (var line in matrix)
+                {
+                    short x;
+                    x = System.Convert.ToInt16(line, 2);
+                    writer.Write(x);                    
+                }
+            }
+        }
+
     }
 }
