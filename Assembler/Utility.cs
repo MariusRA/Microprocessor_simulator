@@ -35,18 +35,14 @@ namespace Assembler
 
         public static List<List<String>> parseFile(RichTextBox rtb, string filePath)
         {
-            //start parsing the.asm file
-            int lineCounter = 0;
-
 
             List<List<String>> asmMatrix = new List<List<String>>();
-
 
             TextFieldParser parser = new TextFieldParser(filePath);
 
             rtb.Text = "";
 
-            String[] delimiters = { ":", ",", " " };
+            String[] delimiters = { ",", " " };
 
             parser.TextFieldType = FieldType.Delimited;
             parser.SetDelimiters(delimiters);
@@ -58,7 +54,7 @@ namespace Assembler
 
                 foreach (string s in asmFields)
                 {
-                    if (s.Contains(";"))
+                    if (s.Contains("$$"))
                     {
                         break;
                     }
@@ -72,8 +68,6 @@ namespace Assembler
                     asmMatrix.Add(asmRow);
                 }
 
-                //Counting the number of lines stored in ASM file 
-                lineCounter++;
             }
 
             parser.Close();
@@ -111,19 +105,7 @@ namespace Assembler
             return result;
         }
 
-        public static void displayCodifiedInstructions(List<List<String>> binaryMatrix, RichTextBox outT)
-        {
-            for (int i = 0; i < binaryMatrix.Count(); i++)
-            {
-                for (int j = 0; j < binaryMatrix[i].Count(); j++)
-                {
-                    outT.Text += binaryMatrix[i][j] + " ";
-                }
-                outT.Text += Environment.NewLine;
-            }
-        }
-
-        public static void displayASMFileContents(List<List<String>> matrix, RichTextBox outT)
+        public static void displayContentsOnTextbox(List<List<String>> matrix, RichTextBox outT)
         {
             for (int i = 0; i < matrix.Count(); i++)
             {
@@ -133,7 +115,6 @@ namespace Assembler
                 }
                 outT.Text += Environment.NewLine;
             }
-            outT.Text += Environment.NewLine;
         }
 
         public static void putConstantValues(List<List<String>> matrix, List<string> values, List<int> indexes)
@@ -167,11 +148,13 @@ namespace Assembler
 
             foreach (var v in matrix)
             {
+                string temp = v[0];
                 for (int i = 1; i < v.Count(); i++)
                 {
                     v[0] += v[i];
                 }
                 mToL.Add(v[0]);
+                v[0] = temp;
             }
             return mToL;
         }
@@ -185,10 +168,48 @@ namespace Assembler
                 {
                     short x;
                     x = System.Convert.ToInt16(line, 2);
-                    writer.Write(x);                    
+                    writer.Write(x);
                 }
             }
         }
 
+        public static List<List<string>> findTags(List<List<string>> matrix)
+        {
+            //first column=tag name, second column=where we find it, rest of columns=where we use it
+            List<List<string>> tagsMatrix = new List<List<string>>();
+
+            for (int k = 0; k < matrix.Count(); k++)
+            {
+                {
+                    for (int i = 0; i < matrix[k].Count(); i++)
+                    {
+                        if (matrix[k][i].Contains(":"))
+                        {
+                            var isTag = matrix[k][i].Split(':');
+                            List<string> sheeeshhhh = new List<string>();
+                            sheeeshhhh.Add(isTag[0]);
+                            sheeeshhhh.Add((k * 2).ToString());
+                            tagsMatrix.Add(sheeeshhhh);
+                            matrix.RemoveAt(k);
+                        }
+                    }
+                }
+            }
+            return tagsMatrix;
+        }
+
+        public static void findLinesThatUseTags(List<List<string>> matrix, List<List<string>> tags)
+        {
+            for(int i = 0; i < matrix.Count(); i++)
+            {
+                for(int k = 0; k < tags.Count(); k++)
+                {
+                    if (matrix[i][1].Equals(tags[k][0]))
+                    {
+                        int xx = (i * 2) - Convert.ToInt32(tags[k][1]);
+                    }
+                }
+            }
+        }
     }
 }

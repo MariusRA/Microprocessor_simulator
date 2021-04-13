@@ -75,8 +75,9 @@ namespace Assembler
             // outputTB
             // 
             this.outputTB.Location = new System.Drawing.Point(13, 49);
-            this.outputTB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.outputTB.Margin = new System.Windows.Forms.Padding(4);
             this.outputTB.Name = "outputTB";
+            this.outputTB.ReadOnly = true;
             this.outputTB.Size = new System.Drawing.Size(553, 481);
             this.outputTB.TabIndex = 1;
             this.outputTB.Text = "";
@@ -89,7 +90,7 @@ namespace Assembler
             this.Controls.Add(this.outputTB);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "assemblerForm";
             this.Text = "Assembler";
             this.Load += new System.EventHandler(this.Form1_Load);
