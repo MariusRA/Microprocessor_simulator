@@ -208,7 +208,7 @@ namespace Assembler
                                 }
                                 else
                                 {
-                                    //direct
+                                    //direct                                  
                                     var reg = asmMatrix[i][1].Split('R');
                                     if (!Utility.checkCorrectRegisterNumber(reg[1], i))
                                     {
@@ -369,6 +369,7 @@ namespace Assembler
                                                     Application.Restart();
                                                     hasApplicationRestarted = true;
                                                 }
+
                                             }
                                         }
                                         else
@@ -481,6 +482,7 @@ namespace Assembler
                             }
 
                             break;
+
                         case 1:
                             break;
                     }
@@ -489,35 +491,36 @@ namespace Assembler
 
             }
 
-            //put the constant values at their places
-            Utility.putConstantValues(binaryMatrix, immValuesV, immValuesI);
+            ////put the constant values at their places
+            //Utility.putConstantValues(binaryMatrix, immValuesV, immValuesI);
 
-            tagsMatrix = Utility.findTags(binaryMatrix);
-            Utility.displayContentsOnTextbox(asmMatrix, outputTB);
-            outputTB.Text += Environment.NewLine;
+            //tagsMatrix = Utility.findTags(binaryMatrix);
+            //Utility.displayContentsOnTextbox(asmMatrix, outputTB);
+            //outputTB.Text += Environment.NewLine;
 
-            Utility.displayContentsOnTextbox(binaryMatrix, outputTB);
-            outputTB.Text += Environment.NewLine;
+            //Utility.displayContentsOnTextbox(binaryMatrix, outputTB);
+            //outputTB.Text += Environment.NewLine;
 
-            Utility.displayContentsOnTextbox(tagsMatrix, outputTB);
-            outputTB.Text += Environment.NewLine;
+            //Utility.displayContentsOnTextbox(tagsMatrix, outputTB);
+            //outputTB.Text += Environment.NewLine;
 
 
-            //if (!hasApplicationRestarted)
-            //{
+            if (!hasApplicationRestarted)
+            {
 
-            //    //display the contents of our 2 matrices
-            //    Utility.displayContentsOnTextbox(asmMatrix, outputTB);
-            //    Utility.displayContentsOnTextbox(binaryMatrix, outputTB);
+                //display the contents of our 2 matrices
+                Utility.putConstantValues(binaryMatrix, immValuesV, immValuesI);
+                Utility.displayContentsOnTextbox(asmMatrix, outputTB);
+                Utility.displayContentsOnTextbox(binaryMatrix, outputTB);
 
-            //    //generate and write .bin file
-            //    List<string> linesToWrite = Utility.matrixToList(binaryMatrix);
-            //    // Utility.binaryFileWriter(linesToWrite, filePath);
-            //}
-            //else
-            //{
+                //generate and write .bin file
+                List<string> linesToWrite = Utility.matrixToList(binaryMatrix);
+                Utility.binaryFileWriter(linesToWrite, filePath);
+            }
+            else
+            {
 
-            //};
+            };
         }
 
         private void Form1_Load(object sender, EventArgs e)
