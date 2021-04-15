@@ -148,91 +148,88 @@ namespace Assembler
                             //we get the address mode of the operand
                             binaryMatrix[i].Insert(1, Utility.getAdressingMode(firstOperand));
 
-                            if (asmMatrix[i][1].Contains("R"))
+                            switch (binaryMatrix[i][1])
                             {
-                                // if the first operand is a register
-                                if (asmMatrix[i][1].Contains("("))
-                                {
-                                    if (asmMatrix[i][1][0].Equals('(') && asmMatrix[i][1][asmMatrix[i][1].Length - 1].Equals(')'))
+                                case "10":
+                                    //indirect
+                                    char[] delimiters = { '(', ')', 'R' };
+                                    var reg = asmMatrix[i][1].Split(delimiters);
+                                    if (!Utility.checkCorrectRegisterNumber(reg[2], i))
                                     {
-                                        //indirect
-                                        char[] delimiters = { '(', ')', 'R' };
-                                        var reg = asmMatrix[i][1].Split(delimiters);
-                                        if (!Utility.checkCorrectRegisterNumber(reg[2], i))
+                                        binaryMatrix[i][2] = System.Convert.ToString(Convert.ToInt32(reg[2]), 2);
+                                        if (binaryMatrix[i][2].Length < 4)
                                         {
-                                            binaryMatrix[i][2] = System.Convert.ToString(Convert.ToInt32(reg[2]), 2);
-                                            while (binaryMatrix[i][2].Length < 4)
-                                            {
-                                                // 'binary' value must be represented on 4 bits
-                                                binaryMatrix[i][2] = "0" + binaryMatrix[i][2];
-                                            }
-                                        }
-                                    }
-                                    else
-                                    {
-                                        //indexed
-                                        char[] delimiters = { '(', ')', 'R' };
-                                        var reg = asmMatrix[i][1].Split(delimiters);
-
-                                        //reg[2] we have the register NO.
-                                        if (!Utility.checkCorrectRegisterNumber(reg[2], i))
-                                        {
-                                            binaryMatrix[i][2] = System.Convert.ToString(Convert.ToInt32(reg[2]), 2);
-
                                             // 'binary' value must be represented on 4 bits
-                                            while (binaryMatrix[i][2].Length < 4)
-                                            {
-                                                binaryMatrix[i][2] = "0" + binaryMatrix[i][2];
-                                            }
-                                            string con = "";
-                                            if (reg[0] != "")
-                                            {
-                                                //const value in front of (
-                                                con = System.Convert.ToString(Convert.ToInt32(reg[0]), 2);
-                                            }
-                                            else
-                                            {
-                                                //const value after )
-                                                con = System.Convert.ToString(Convert.ToInt32(reg[reg.Length - 1]), 2);
-                                            }
-                                            while (con.Length < 16)
-                                            {
-                                                // constant value must be represented on 16 bits
-                                                con = "0" + con;
-                                            }
-                                            immValuesI.Add(i + 1);
-                                            immValuesV.Add(con);
+                                            binaryMatrix[i][2] = binaryMatrix[i][2].PadLeft(4, '0');
                                         }
+                                    }
+                                    break;
+
+                                case "11":
+                                    //indexed
+                                    char[] delimiters1 = { '(', ')', 'R' };
+                                    var reg1 = asmMatrix[i][1].Split(delimiters1);
+
+                                    //reg[2] we have the register NO.
+                                    if (!Utility.checkCorrectRegisterNumber(reg1[2], i))
+                                    {
+                                        binaryMatrix[i][2] = System.Convert.ToString(Convert.ToInt32(reg1[2]), 2);
+
+                                        // 'binary' value must be represented on 4 bits
+                                        if (binaryMatrix[i][2].Length < 4)
+                                        {
+                                            binaryMatrix[i][2] = binaryMatrix[i][2].PadLeft(4, '0');
+                                        }
+                                        string con = "";
+                                        if (reg1[0] != "")
+                                        {
+                                            //const value in front of (
+                                            con = System.Convert.ToString(Convert.ToInt32(reg1[0]), 2);
+                                        }
+                                        else
+                                        {
+                                            //const value after )
+                                            con = System.Convert.ToString(Convert.ToInt32(reg1[reg1.Length - 1]), 2);
+                                        }
+                                        if (con.Length < 16)
+                                        {
+                                            // constant value must be represented on 16 bits
+                                            con = con.PadLeft(16, '0');
+                                        }
+                                        immValuesI.Add(i + 1);
+                                        immValuesV.Add(con);
 
                                     }
-                                }
-                                else
-                                {
+
+                                    break;
+
+                                case "00":
+                                    //error: first operand must not be a imm value
+                                    string errText = "First operand must not be a imm value (line: " + (i + 1) + " )";
+                                    DialogResult result = MessageBox.Show(errText, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                                    if (result == DialogResult.OK)
+                                    {
+                                        Application.Restart();
+                                        hasApplicationRestarted = true;
+
+                                    }
+                                    break;
+
+                                case "01":
                                     //direct
-                                    var reg = asmMatrix[i][1].Split('R');
-                                    if (!Utility.checkCorrectRegisterNumber(reg[1], i))
+                                    var reg2 = asmMatrix[i][1].Split('R');
+                                    if (!Utility.checkCorrectRegisterNumber(reg2[1], i))
                                     {
-                                        binaryMatrix[i][2] = System.Convert.ToString(Convert.ToInt32(reg[1]), 2);
-                                        while (binaryMatrix[i][2].Length < 4)
+                                        binaryMatrix[i][2] = System.Convert.ToString(Convert.ToInt32(reg2[1]), 2);
+                                        if (binaryMatrix[i][2].Length < 4)
                                         {
                                             // 'binary' value must be represented on 4 bits
-                                            binaryMatrix[i][2] = "0" + binaryMatrix[i][2];
+                                            binaryMatrix[i][2] = binaryMatrix[i][2].PadLeft(4, '0');
                                         }
                                     }
-                                }
-                            }
-                            else
-                            {
-                                //error: first operand must not be a imm value
-                                string errText = "First operand must not be a imm value (line: " + (i + 1) + " )";
-                                DialogResult result = MessageBox.Show(errText, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    break;
 
-                                if (result == DialogResult.OK)
-                                {
-                                    Application.Restart();
-                                    hasApplicationRestarted = true;
-
-                                }
                             }
 
                             var secondOperand = asmMatrix[i][2];
@@ -240,96 +237,94 @@ namespace Assembler
                             //we get the address mode of the operand
                             binaryMatrix[i].Insert(3, Utility.getAdressingMode(secondOperand));
 
-                            if (asmMatrix[i][2].Contains("R"))
+                            switch (binaryMatrix[i][3])
                             {
-                                // if the second operand is a register
-                                if (asmMatrix[i][2].Contains("("))
-                                {
-                                    if (asmMatrix[i][2][0].Equals('(') && asmMatrix[i][2][asmMatrix[i][2].Length - 1].Equals(')'))
+                                case "10":
+                                    //indirect
+                                    char[] delimiters = { '(', ')', 'R' };
+                                    var reg = secondOperand.Split(delimiters);
+                                    if (!Utility.checkCorrectRegisterNumber(reg[2], i))
                                     {
-                                        //indirect
-                                        char[] delimiters = { '(', ')', 'R' };
-                                        var reg = asmMatrix[i][2].Split(delimiters);
-                                        if (!Utility.checkCorrectRegisterNumber(reg[2], i))
-                                        {
-                                            binaryMatrix[i][4] = System.Convert.ToString(Convert.ToInt32(reg[2]), 2);
-                                            while (binaryMatrix[i][4].Length < 4)
-                                            {
-                                                // 'binary' value must be represented on 4 bits
-                                                binaryMatrix[i][4] = "0" + binaryMatrix[i][4];
-                                            }
-                                        }
-                                    }
-                                    else
-                                    {
-                                        //indexed
-                                        char[] delimiters = { '(', ')', 'R' };
-                                        var reg = asmMatrix[i][2].Split(delimiters);
-
-                                        //reg[2] we have the register NO.
-                                        if (!Utility.checkCorrectRegisterNumber(reg[2], i))
-                                        {
-                                            binaryMatrix[i][4] = System.Convert.ToString(Convert.ToInt32(reg[2]), 2);
-                                            while (binaryMatrix[i][4].Length < 4)
-                                            {
-                                                // 'binary' value must be represented on 4 bits
-                                                binaryMatrix[i][4] = "0" + binaryMatrix[i][4];
-                                            }
-                                            string con = "";
-                                            if (reg[0] != "")
-                                            {
-                                                //const value in front of (
-                                                con = System.Convert.ToString(Convert.ToInt32(reg[0]), 2);
-                                            }
-                                            else
-                                            {
-                                                //const value after )
-                                                con = System.Convert.ToString(Convert.ToInt32(reg[reg.Length - 1]), 2);
-                                            }
-                                            while (con.Length < 16)
-                                            {
-                                                // constant value must be represented on 16 bits
-                                                con = "0" + con;
-                                            }
-                                            immValuesI.Add(i + 1);
-                                            immValuesV.Add(con);
-                                        }
-                                    }
-                                }
-                                else
-                                {
-                                    //direct
-                                    var reg = asmMatrix[i][2].Split('R');
-
-                                    if (!Utility.checkCorrectRegisterNumber(reg[1], i))
-                                    {
-                                        binaryMatrix[i][4] = System.Convert.ToString(Convert.ToInt32(reg[1]), 2);
-                                        while (binaryMatrix[i][4].Length < 4)
+                                        binaryMatrix[i][4] = System.Convert.ToString(Convert.ToInt32(reg[2]), 2);
+                                        if (binaryMatrix[i][4].Length < 4)
                                         {
                                             // 'binary' value must be represented on 4 bits
-                                            binaryMatrix[i][4] = "0" + binaryMatrix[i][4];
+                                            binaryMatrix[i][4] = binaryMatrix[i][4].PadLeft(4, '0');
                                         }
                                     }
-                                }
-                            }
-                            else
-                            {
-                                //second operand can be a constant value
-                                //those bits can have any value since the adressing mode is an immediate one
-                                binaryMatrix[i][4] = "0000";
+                                    break;
 
-                                string con = asmMatrix[i][2];
-                                con = System.Convert.ToString(Convert.ToInt32(asmMatrix[i][2]), 2);
-                                while (con.Length < 16)
-                                {
-                                    // constant value must be represented on 16 bits
-                                    con = "0" + con;
-                                }
+                                case "11":
+                                    //indexed
+                                    char[] delimiters1 = { '(', ')', 'R' };
+                                    var reg1 = secondOperand.Split(delimiters1);
 
-                                immValuesI.Add(i + 1);
-                                immValuesV.Add(con);
+                                    //reg[2] we have the register NO.
+                                    if (!Utility.checkCorrectRegisterNumber(reg1[2], i))
+                                    {
+                                        binaryMatrix[i][4] = System.Convert.ToString(Convert.ToInt32(reg1[2]), 2);
+
+                                        // 'binary' value must be represented on 4 bits
+                                        if (binaryMatrix[i][4].Length < 4)
+                                        {
+                                            binaryMatrix[i][4] = binaryMatrix[i][4].PadLeft(4, '0');
+                                        }
+                                        string con1 = "";
+                                        if (reg1[0] != "")
+                                        {
+                                            //const value in front of (
+                                            con1 = System.Convert.ToString(Convert.ToInt32(reg1[0]), 2);
+                                        }
+                                        else
+                                        {
+                                            //const value after )
+                                            con1 = System.Convert.ToString(Convert.ToInt32(reg1[reg1.Length - 1]), 2);
+                                        }
+                                        if (con1.Length < 16)
+                                        {
+                                            // constant value must be represented on 16 bits
+                                            con1 = con1.PadLeft(16, '0');
+                                        }
+                                        immValuesI.Add(i + 1);
+                                        immValuesV.Add(con1);
+
+                                    }
+
+                                    break;
+
+                                case "01":
+                                    //direct
+                                    var reg2 = secondOperand.Split('R');
+                                    if (!Utility.checkCorrectRegisterNumber(reg2[1], i))
+                                    {
+                                        binaryMatrix[i][4] = System.Convert.ToString(Convert.ToInt32(reg2[1]), 2);
+                                        if (binaryMatrix[i][4].Length < 4)
+                                        {
+                                            binaryMatrix[i][4] = binaryMatrix[i][4].PadLeft(4, '0');
+                                        }
+                                    }
+                                    break;
+
+                                case "00":
+                                    //second operand can be a constant value
+                                    //those bits can have any value since the adressing mode is an immediate one
+                                    binaryMatrix[i][4] = "0000";
+
+                                    string con = asmMatrix[i][2];
+                                    con = System.Convert.ToString(Convert.ToInt32(asmMatrix[i][2]), 2);
+                                    if (con.Length < 16)
+                                    {
+                                        // constant value must be represented on 16 bits
+                                        con = con.PadLeft(16, '0');
+                                    }
+
+                                    immValuesI.Add(i + 1);
+                                    immValuesV.Add(con);
+                                    break;
+
                             }
                             break;
+
 
                         case 2:
 
@@ -339,65 +334,66 @@ namespace Assembler
                                 {
                                     string operand = asmMatrix[i][1];
                                     binaryMatrix[i].Insert(1, Utility.getAdressingMode(operand));
-                                    if (asmMatrix[i][1].Contains("R")) // if the first operand is a register
-                                    {
-                                        if (asmMatrix[i][1].Contains("("))
-                                        {
-                                            if (asmMatrix[i][1][0].Equals('(') && asmMatrix[i][1][asmMatrix[i][1].Length - 1].Equals(')'))
-                                            {
-                                                //indirect
-                                                char[] delimiters = { '(', ')', 'R' };
-                                                var reg = asmMatrix[i][1].Split(delimiters);
-                                                if (!Utility.checkCorrectRegisterNumber(reg[2], i))
-                                                {
-                                                    binaryMatrix[i][2] = System.Convert.ToString(Convert.ToInt32(reg[2]), 2);
-                                                    while (binaryMatrix[i][2].Length < 4)
-                                                    {
-                                                        // 'binary' value must be represented on 4 bits
-                                                        binaryMatrix[i][2] = "0" + binaryMatrix[i][2];
-                                                    }
-                                                }
-                                            }
-                                            else
-                                            {
-                                                //indexed
-                                                string errText = "Operand's addressing mode must not be indexed (line: " + (i + 1) + " )";
-                                                DialogResult result = MessageBox.Show(errText, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                                                if (result == DialogResult.OK)
-                                                {
-                                                    Application.Restart();
-                                                    hasApplicationRestarted = true;
-                                                }
-                                            }
-                                        }
-                                        else
-                                        {
-                                            //direct
-                                            var reg = asmMatrix[i][1].Split('R');
-                                            if (!Utility.checkCorrectRegisterNumber(reg[1], i))
+                                    switch (binaryMatrix[i][1])
+                                    {
+                                        case "10":
+                                            //indirect
+                                            char[] delimiters = { '(', ')', 'R' };
+                                            var reg = asmMatrix[i][1].Split(delimiters);
+                                            if (!Utility.checkCorrectRegisterNumber(reg[2], i))
                                             {
-                                                binaryMatrix[i][2] = System.Convert.ToString(Convert.ToInt32(reg[1]), 2);
+                                                binaryMatrix[i][2] = System.Convert.ToString(Convert.ToInt32(reg[2]), 2);
                                                 while (binaryMatrix[i][2].Length < 4)
                                                 {
                                                     // 'binary' value must be represented on 4 bits
-                                                    binaryMatrix[i][2] = "0" + binaryMatrix[i][2];
+                                                    binaryMatrix[i][2] = binaryMatrix[i][2].PadLeft(4, '0');
                                                 }
                                             }
-                                        }
-                                    }
-                                    else
-                                    {
-                                        //error: operand must not be a imm value
-                                        string errText = "Operand must not be a imm value (line: " + (i + 1) + " )";
-                                        DialogResult result = MessageBox.Show(errText, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                                        if (result == DialogResult.OK)
-                                        {
-                                            Application.Restart();
-                                            hasApplicationRestarted = true;
-                                        }
+                                            break;
+
+                                        case "11":
+
+                                            //indexed
+                                            string errText = "Operand's addressing mode must not be indexed (line: " + (i + 1) + " )";
+                                            DialogResult result = MessageBox.Show(errText, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                                            if (result == DialogResult.OK)
+                                            {
+                                                Application.Restart();
+                                                hasApplicationRestarted = true;
+                                            }
+                                            break;
+
+                                        case "01":
+                                            //direct
+                                            var reg1 = asmMatrix[i][1].Split('R');
+                                            if (!Utility.checkCorrectRegisterNumber(reg1[1], i))
+                                            {
+                                                binaryMatrix[i][2] = System.Convert.ToString(Convert.ToInt32(reg1[1]), 2);
+                                                while (binaryMatrix[i][2].Length < 4)
+                                                {
+                                                    // 'binary' value must be represented on 4 bits
+                                                    binaryMatrix[i][2] = binaryMatrix[i][2].PadLeft(4, '0');
+                                                }
+                                            }
+                                            break;
+
+                                        case "00":
+                                            //error: operand must not be a imm value
+                                            string errText1 = "Operand must not be a imm value (line: " + (i + 1) + " )";
+                                            DialogResult result1 = MessageBox.Show(errText1, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                                            if (result1 == DialogResult.OK)
+                                            {
+                                                Application.Restart();
+                                                hasApplicationRestarted = true;
+                                            }
+                                            break;
+
                                     }
+
                                 }
                                 else
                                 {
@@ -412,7 +408,7 @@ namespace Assembler
                                                 //indirect
                                                 binaryMatrix[i].Insert(1, "10");
 
-                                                char[] delimiters = { '(', ')','R' };
+                                                char[] delimiters = { '(', ')', 'R' };
                                                 var reg = operand.Split(delimiters);
                                                 if (!Utility.checkCorrectRegisterNumber(reg[2], i))
                                                 {
