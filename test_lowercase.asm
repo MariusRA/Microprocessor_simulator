@@ -1,4 +1,5 @@
 add (r14),5
+add 10(r14),9
 mov r2,(r13) 
 mov (r7)29,r5
 add (r6)122,(r12)12
@@ -14,3 +15,4 @@ asr r10
 push (r8)
 jmp (r4)
 jmp (r9)19
+mov r5,r4

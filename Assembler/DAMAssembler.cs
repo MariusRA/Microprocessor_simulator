@@ -63,26 +63,6 @@ namespace Assembler
                 {"POPFLAG","1110000000010010"}
             };
 
-        public static Dictionary<string, string> register = new Dictionary<string, string>()
-        {
-            {"R0", "0000" },
-            {"R1", "0001" },
-            {"R2", "0010" },
-            {"R3", "0011" },
-            {"R4", "0100" },
-            {"R5", "0101" },
-            {"R6", "0110" },
-            {"R7", "0111" },
-            {"R8", "1000" },
-            {"R9", "1001" },
-            {"R10", "1010" },
-            {"R11", "1011" },
-            {"R12", "1100" },
-            {"R13", "1101" },
-            {"R14", "1110" },
-            {"R15", "1111" }
-        };
-
         public assemblerForm()
         {
             InitializeComponent();
@@ -104,9 +84,7 @@ namespace Assembler
             List<List<String>> asmMatrix = Utility.parseFile(outputTB, filePath);
             List<List<String>> binaryMatrix = new List<List<string>>();
 
-            //first column=tag name, second column=where we find it, third column=where we use it
             List<List<string>> tagsMatrix = new List<List<string>>();
-
 
             List<int> immValuesI = new List<int>();
             List<string> immValuesV = new List<string>();
@@ -344,7 +322,7 @@ namespace Assembler
                                             if (!Utility.checkCorrectRegisterNumber(reg[2], i))
                                             {
                                                 binaryMatrix[i][2] = System.Convert.ToString(Convert.ToInt32(reg[2]), 2);
-                                                while (binaryMatrix[i][2].Length < 4)
+                                                if (binaryMatrix[i][2].Length < 4)
                                                 {
                                                     // 'binary' value must be represented on 4 bits
                                                     binaryMatrix[i][2] = binaryMatrix[i][2].PadLeft(4, '0');
@@ -372,7 +350,7 @@ namespace Assembler
                                             if (!Utility.checkCorrectRegisterNumber(reg1[1], i))
                                             {
                                                 binaryMatrix[i][2] = System.Convert.ToString(Convert.ToInt32(reg1[1]), 2);
-                                                while (binaryMatrix[i][2].Length < 4)
+                                                if (binaryMatrix[i][2].Length < 4)
                                                 {
                                                     // 'binary' value must be represented on 4 bits
                                                     binaryMatrix[i][2] = binaryMatrix[i][2].PadLeft(4, '0');
@@ -413,10 +391,10 @@ namespace Assembler
                                                 if (!Utility.checkCorrectRegisterNumber(reg[2], i))
                                                 {
                                                     binaryMatrix[i][2] = System.Convert.ToString(Convert.ToInt32(reg[2]), 2);
-                                                    while (binaryMatrix[i][2].Length < 4)
+                                                    if(binaryMatrix[i][2].Length < 4)
                                                     {
                                                         // 'binary' value must be represented on 4 bits
-                                                        binaryMatrix[i][2] = "0" + binaryMatrix[i][2];
+                                                        binaryMatrix[i][2] = binaryMatrix[i][2].PadLeft(4, '0');
                                                     }
                                                 }
                                             }
@@ -432,10 +410,10 @@ namespace Assembler
                                                 if (!Utility.checkCorrectRegisterNumber(reg[2], i))
                                                 {
                                                     binaryMatrix[i][2] = System.Convert.ToString(Convert.ToInt32(reg[2]), 2);
-                                                    while (binaryMatrix[i][2].Length < 4)
+                                                    if (binaryMatrix[i][2].Length < 4)
                                                     {
                                                         // 'binary' value must be represented on 4 bits
-                                                        binaryMatrix[i][2] = "0" + binaryMatrix[i][2];
+                                                        binaryMatrix[i][2] = binaryMatrix[i][2].PadLeft(4, '0');
                                                     }
                                                     string con = "";
                                                     if (reg[0] != "")
@@ -448,10 +426,10 @@ namespace Assembler
                                                         //const value after )
                                                         con = System.Convert.ToString(Convert.ToInt32(reg[reg.Length - 1]), 2);
                                                     }
-                                                    while (con.Length < 16)
+                                                    if (con.Length < 16)
                                                     {
                                                         // constant value must be represented on 16 bits
-                                                        con = "0" + con;
+                                                        con = con.PadLeft(16, '0');
                                                     }
                                                     immValuesI.Add(i + 1);
                                                     immValuesV.Add(con);
@@ -460,7 +438,9 @@ namespace Assembler
                                         }
                                         else
                                         {
-                                            // tag
+                                            //tags
+                                            immValuesI.Add(i + 1);
+                                            immValuesV.Add("constant value");
                                         }
 
 
@@ -470,10 +450,6 @@ namespace Assembler
 
 
                                 }
-                            }
-                            else if (binaryMatrix[i][0].Length == 8)
-                            {
-
                             }
 
                             break;
@@ -485,35 +461,62 @@ namespace Assembler
 
             }
 
-            //put the constant values at their places
             Utility.putConstantValues(binaryMatrix, immValuesV, immValuesI);
-
             tagsMatrix = Utility.findTags(binaryMatrix);
-            Utility.displayContentsOnTextbox(asmMatrix, outputTB);
-            outputTB.Text += Environment.NewLine;
 
-            Utility.displayContentsOnTextbox(binaryMatrix, outputTB);
-            outputTB.Text += Environment.NewLine;
+            //here we handle tags for branches and jumps
 
-            Utility.displayContentsOnTextbox(tagsMatrix, outputTB);
-            outputTB.Text += Environment.NewLine;
+            for (int i = 0; i < binaryMatrix.Count(); i++)
+            {
+                if (binaryMatrix[i][0].Length > 8 && binaryMatrix[i][0].Length!=16)
+                {
+
+                    for (int j = 0; j < tagsMatrix.Count(); j++)
+                    {
+                        if (binaryMatrix[i][1] == tagsMatrix[j][0])
+                        {
+                            binaryMatrix[i][1] = "000000";
+                            List<string> x = new List<string>();
+                            x.Add(System.Convert.ToString(Convert.ToInt32(tagsMatrix[j][1]), 2).PadLeft(16, '0'));
+                            binaryMatrix[i + 1] = x;
+                        }
+                    }
+                }
+            }
 
 
-            //if (!hasApplicationRestarted)
-            //{
+            //Utility.displayContentsOnTextbox(asmMatrix, outputTB);
+            //outputTB.Text += Environment.NewLine;
 
-            //    //display the contents of our 2 matrices
-            //    Utility.displayContentsOnTextbox(asmMatrix, outputTB);
-            //    Utility.displayContentsOnTextbox(binaryMatrix, outputTB);
+            //Utility.displayContentsOnTextbox(binaryMatrix, outputTB);
+            //outputTB.Text += Environment.NewLine;
 
-            //    //generate and write .bin file
-            //    List<string> linesToWrite = Utility.matrixToList(binaryMatrix);
-            //    // Utility.binaryFileWriter(linesToWrite, filePath);
-            //}
-            //else
-            //{
+            //Utility.displayContentsOnTextbox(tagsMatrix, outputTB);
+            //outputTB.Text += Environment.NewLine;
 
-            //};
+
+            if (!hasApplicationRestarted)
+            {
+
+                //display the contents of our 2 matrices
+
+                Utility.displayContentsOnTextbox(asmMatrix, outputTB);
+                outputTB.Text += Environment.NewLine;
+
+                Utility.displayContentsOnTextbox(tagsMatrix, outputTB);
+                outputTB.Text += Environment.NewLine;
+
+                Utility.displayContentsOnTextbox(binaryMatrix, outputTB);              
+                outputTB.Text += Environment.NewLine;
+
+                //generate and write.bin file
+                List<string> linesToWrite = Utility.matrixToList(binaryMatrix);
+                Utility.binaryFileWriter(linesToWrite, filePath);
+            }
+            else
+            {
+
+            };
         }
 
         private void Form1_Load(object sender, EventArgs e)
