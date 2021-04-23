@@ -186,10 +186,10 @@ namespace Assembler
                         if (matrix[k][i].Contains(":"))
                         {
                             var isTag = matrix[k][i].Split(':');
-                            List<string> sheeeshhhh = new List<string>();
-                            sheeeshhhh.Add(isTag[0]);
-                            sheeeshhhh.Add((k * 2).ToString());
-                            tagsMatrix.Add(sheeeshhhh);
+                            List<string> t = new List<string>();
+                            t.Add(isTag[0]);
+                            t.Add((k * 2).ToString());
+                            tagsMatrix.Add(t);
                             matrix.RemoveAt(k);
                         }
                     }
@@ -198,18 +198,5 @@ namespace Assembler
             return tagsMatrix;
         }
 
-        public static void findLinesThatUseTags(List<List<string>> matrix, List<List<string>> tags)
-        {
-            for(int i = 0; i < matrix.Count(); i++)
-            {
-                for(int k = 0; k < tags.Count(); k++)
-                {
-                    if (matrix[i][1].Equals(tags[k][0]))
-                    {
-                        int xx = (i * 2) - Convert.ToInt32(tags[k][1]);
-                    }
-                }
-            }
-        }
     }
 }
