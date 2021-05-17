@@ -451,7 +451,7 @@ namespace Assembler
 
                                 }
                             }
-
+                           
                             break;
                         case 1:
                             break;
@@ -480,6 +480,37 @@ namespace Assembler
                             x.Add(System.Convert.ToString(Convert.ToInt32(tagsMatrix[j][1]), 2).PadLeft(16, '0'));
                             binaryMatrix[i + 1] = x;
                         }
+                    }
+                }
+                else if (binaryMatrix[i][0].Length == 8) //branches
+                {
+                    for(int k = 0; k < tagsMatrix.Count(); k++)
+                    {
+                        if (binaryMatrix[i][1] == tagsMatrix[k][0])
+                        {
+                            int currentPC = i * 2;
+                            int lineOfTag = Int32.Parse(tagsMatrix[k][1]);
+                            int codif = currentPC - lineOfTag;
+                            string value = null;
+                            if (codif >= 0)
+                            {
+                                value = System.Convert.ToString(codif, 2).PadLeft(8, '0');
+                            }
+                            else
+                            {
+                                value = System.Convert.ToString(codif, 2);
+                                if (value.Length > 8)
+                                {
+                                    value = value.Substring(value.Length - 8, 8);
+                                }
+                            }
+
+                            binaryMatrix[i][1] = value;
+                           
+                        }
+                        else //branch with imm value
+                        {
+                        };
                     }
                 }
             }
