@@ -1,0 +1,10 @@
+F:\Microprocessor_simulator\Simulator\Simulator\obj\Debug\Simulator.csprojAssemblyReference.cache
+F:\Microprocessor_simulator\Simulator\Simulator\obj\Debug\Simulator.Properties.Resources.resources
+F:\Microprocessor_simulator\Simulator\Simulator\obj\Debug\Simulator.csproj.GenerateResource.cache
+F:\Microprocessor_simulator\Simulator\Simulator\obj\Debug\Simulator.csproj.CoreCompileInputs.cache
+F:\Microprocessor_simulator\Simulator\Simulator\bin\Debug\Simulator.exe.config
+F:\Microprocessor_simulator\Simulator\Simulator\bin\Debug\Simulator.exe
+F:\Microprocessor_simulator\Simulator\Simulator\bin\Debug\Simulator.pdb
+F:\Microprocessor_simulator\Simulator\Simulator\obj\Debug\Simulator.Form1.resources
+F:\Microprocessor_simulator\Simulator\Simulator\obj\Debug\Simulator.exe
+F:\Microprocessor_simulator\Simulator\Simulator\obj\Debug\Simulator.pdb
