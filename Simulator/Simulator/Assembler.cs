@@ -66,7 +66,7 @@ namespace Simulator
         public static string loadFile()
         {
             //selecting the file we want to parse
-            var filePath = string.Empty;
+           var filePath = string.Empty;
 
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
@@ -690,6 +690,7 @@ namespace Simulator
                 //generate and write.bin file
                 List<string> linesToWrite = matrixToList(binaryMatrix);
                 binaryFileWriter(linesToWrite, filePath);
+                MessageBox.Show("Assembly done!");
             }
             else
             {

@@ -231,7 +231,6 @@ namespace Simulator
             this.Reg5.ReadOnly = true;
             this.Reg5.Size = new System.Drawing.Size(91, 23);
             this.Reg5.TabIndex = 4;
-            this.Reg5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // Reg6
             // 
@@ -348,7 +347,7 @@ namespace Simulator
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(26, 17);
             this.label1.TabIndex = 16;
-            this.label1.Text = "R1";
+            this.label1.Text = "R0";
             // 
             // reg2Label
             // 
@@ -357,7 +356,7 @@ namespace Simulator
             this.reg2Label.Name = "reg2Label";
             this.reg2Label.Size = new System.Drawing.Size(26, 17);
             this.reg2Label.TabIndex = 17;
-            this.reg2Label.Text = "R2";
+            this.reg2Label.Text = "R1";
             // 
             // reg3Label
             // 
@@ -366,8 +365,7 @@ namespace Simulator
             this.reg3Label.Name = "reg3Label";
             this.reg3Label.Size = new System.Drawing.Size(26, 17);
             this.reg3Label.TabIndex = 18;
-            this.reg3Label.Text = "R3";
-            this.reg3Label.Click += new System.EventHandler(this.label3_Click);
+            this.reg3Label.Text = "R2";
             // 
             // label4
             // 
@@ -376,7 +374,7 @@ namespace Simulator
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 17);
             this.label4.TabIndex = 19;
-            this.label4.Text = "R4";
+            this.label4.Text = "R3";
             // 
             // label5
             // 
@@ -385,7 +383,7 @@ namespace Simulator
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(26, 17);
             this.label5.TabIndex = 20;
-            this.label5.Text = "R5";
+            this.label5.Text = "R4";
             // 
             // label6
             // 
@@ -394,7 +392,7 @@ namespace Simulator
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(26, 17);
             this.label6.TabIndex = 21;
-            this.label6.Text = "R6";
+            this.label6.Text = "R5";
             // 
             // label7
             // 
@@ -403,7 +401,7 @@ namespace Simulator
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(26, 17);
             this.label7.TabIndex = 22;
-            this.label7.Text = "R7";
+            this.label7.Text = "R6";
             // 
             // label8
             // 
@@ -412,7 +410,7 @@ namespace Simulator
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(26, 17);
             this.label8.TabIndex = 23;
-            this.label8.Text = "R8";
+            this.label8.Text = "R7";
             // 
             // label9
             // 
@@ -421,16 +419,16 @@ namespace Simulator
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(26, 17);
             this.label9.TabIndex = 24;
-            this.label9.Text = "R9";
+            this.label9.Text = "R8";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(1203, 421);
+            this.label10.Location = new System.Drawing.Point(1211, 421);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(34, 17);
+            this.label10.Size = new System.Drawing.Size(26, 17);
             this.label10.TabIndex = 25;
-            this.label10.Text = "R10";
+            this.label10.Text = "R9";
             // 
             // label11
             // 
@@ -439,7 +437,7 @@ namespace Simulator
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(34, 17);
             this.label11.TabIndex = 26;
-            this.label11.Text = "R11";
+            this.label11.Text = "R10";
             // 
             // label12
             // 
@@ -448,7 +446,7 @@ namespace Simulator
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(34, 17);
             this.label12.TabIndex = 27;
-            this.label12.Text = "R12";
+            this.label12.Text = "R11";
             // 
             // label13
             // 
@@ -457,7 +455,7 @@ namespace Simulator
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(34, 17);
             this.label13.TabIndex = 28;
-            this.label13.Text = "R13";
+            this.label13.Text = "R12";
             // 
             // label14
             // 
@@ -466,8 +464,7 @@ namespace Simulator
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(34, 17);
             this.label14.TabIndex = 29;
-            this.label14.Text = "R14";
-            this.label14.Click += new System.EventHandler(this.label14_Click);
+            this.label14.Text = "R13";
             // 
             // label15
             // 
@@ -476,7 +473,7 @@ namespace Simulator
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(34, 17);
             this.label15.TabIndex = 30;
-            this.label15.Text = "R15";
+            this.label15.Text = "R14";
             // 
             // label16
             // 
@@ -485,7 +482,7 @@ namespace Simulator
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(34, 17);
             this.label16.TabIndex = 31;
-            this.label16.Text = "R16";
+            this.label16.Text = "R15";
             // 
             // panel18
             // 
@@ -712,7 +709,6 @@ namespace Simulator
             this.label2.Size = new System.Drawing.Size(44, 17);
             this.label2.TabIndex = 45;
             this.label2.Text = "FLAG";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label17
             // 
@@ -723,7 +719,6 @@ namespace Simulator
             this.label17.Size = new System.Drawing.Size(26, 17);
             this.label17.TabIndex = 46;
             this.label17.Text = "SP";
-            this.label17.Click += new System.EventHandler(this.label17_Click);
             // 
             // label18
             // 
@@ -734,7 +729,6 @@ namespace Simulator
             this.label18.Size = new System.Drawing.Size(17, 17);
             this.label18.TabIndex = 47;
             this.label18.Text = "T";
-            this.label18.Click += new System.EventHandler(this.label18_Click);
             // 
             // label19
             // 
@@ -745,7 +739,6 @@ namespace Simulator
             this.label19.Size = new System.Drawing.Size(26, 17);
             this.label19.TabIndex = 48;
             this.label19.Text = "PC";
-            this.label19.Click += new System.EventHandler(this.label19_Click);
             // 
             // label20
             // 
@@ -756,7 +749,6 @@ namespace Simulator
             this.label20.Size = new System.Drawing.Size(30, 17);
             this.label20.TabIndex = 49;
             this.label20.Text = "IVR";
-            this.label20.Click += new System.EventHandler(this.label20_Click);
             // 
             // label21
             // 
@@ -767,7 +759,6 @@ namespace Simulator
             this.label21.Size = new System.Drawing.Size(37, 17);
             this.label21.TabIndex = 50;
             this.label21.Text = "ADR";
-            this.label21.Click += new System.EventHandler(this.label21_Click);
             // 
             // label22
             // 
@@ -778,7 +769,6 @@ namespace Simulator
             this.label22.Size = new System.Drawing.Size(39, 17);
             this.label22.TabIndex = 51;
             this.label22.Text = "MDR";
-            this.label22.Click += new System.EventHandler(this.label22_Click);
             // 
             // label23
             // 
@@ -789,7 +779,6 @@ namespace Simulator
             this.label23.Size = new System.Drawing.Size(21, 17);
             this.label23.TabIndex = 52;
             this.label23.Text = "IR";
-            this.label23.Click += new System.EventHandler(this.label23_Click);
             // 
             // label3
             // 
@@ -800,7 +789,6 @@ namespace Simulator
             this.label3.Size = new System.Drawing.Size(43, 17);
             this.label3.TabIndex = 53;
             this.label3.Text = "DEC I";
-            this.label3.Click += new System.EventHandler(this.label3_Click_1);
             // 
             // RegSP
             // 
@@ -810,7 +798,6 @@ namespace Simulator
             this.RegSP.ReadOnly = true;
             this.RegSP.Size = new System.Drawing.Size(91, 22);
             this.RegSP.TabIndex = 32;
-            this.RegSP.TextChanged += new System.EventHandler(this.RegSP_TextChanged);
             // 
             // RegFlag
             // 
@@ -819,7 +806,6 @@ namespace Simulator
             this.RegFlag.ReadOnly = true;
             this.RegFlag.Size = new System.Drawing.Size(91, 22);
             this.RegFlag.TabIndex = 33;
-            this.RegFlag.TextChanged += new System.EventHandler(this.RegFlag_TextChanged);
             // 
             // RegT
             // 
@@ -829,7 +815,6 @@ namespace Simulator
             this.RegT.ReadOnly = true;
             this.RegT.Size = new System.Drawing.Size(91, 23);
             this.RegT.TabIndex = 34;
-            this.RegT.TextChanged += new System.EventHandler(this.RegT_TextChanged);
             // 
             // RegPC
             // 
@@ -839,7 +824,6 @@ namespace Simulator
             this.RegPC.ReadOnly = true;
             this.RegPC.Size = new System.Drawing.Size(91, 23);
             this.RegPC.TabIndex = 35;
-            this.RegPC.TextChanged += new System.EventHandler(this.RegPC_TextChanged);
             // 
             // RegIVR
             // 
@@ -849,7 +833,6 @@ namespace Simulator
             this.RegIVR.ReadOnly = true;
             this.RegIVR.Size = new System.Drawing.Size(91, 23);
             this.RegIVR.TabIndex = 36;
-            this.RegIVR.TextChanged += new System.EventHandler(this.RegIVR_TextChanged);
             // 
             // RegADR
             // 
@@ -859,7 +842,6 @@ namespace Simulator
             this.RegADR.ReadOnly = true;
             this.RegADR.Size = new System.Drawing.Size(91, 23);
             this.RegADR.TabIndex = 37;
-            this.RegADR.TextChanged += new System.EventHandler(this.RegADR_TextChanged);
             // 
             // RegMDR
             // 
@@ -869,7 +851,6 @@ namespace Simulator
             this.RegMDR.ReadOnly = true;
             this.RegMDR.Size = new System.Drawing.Size(91, 23);
             this.RegMDR.TabIndex = 38;
-            this.RegMDR.TextChanged += new System.EventHandler(this.RegMDR_TextChanged);
             // 
             // RegIR
             // 
@@ -879,7 +860,6 @@ namespace Simulator
             this.RegIR.ReadOnly = true;
             this.RegIR.Size = new System.Drawing.Size(91, 23);
             this.RegIR.TabIndex = 39;
-            this.RegIR.TextChanged += new System.EventHandler(this.RegIR_TextChanged);
             // 
             // RegDec
             // 
@@ -889,7 +869,6 @@ namespace Simulator
             this.RegDec.ReadOnly = true;
             this.RegDec.Size = new System.Drawing.Size(91, 23);
             this.RegDec.TabIndex = 40;
-            this.RegDec.TextChanged += new System.EventHandler(this.RegDec_TextChanged);
             // 
             // panel5
             // 
@@ -1430,11 +1409,11 @@ namespace Simulator
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1177, 746);
+            this.button1.Location = new System.Drawing.Point(1285, 697);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(125, 26);
             this.button1.TabIndex = 102;
-            this.button1.Text = "button1";
+            this.button1.Text = "Step";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -1575,7 +1554,6 @@ namespace Simulator
             this.Controls.Add(this.Reg1);
             this.Controls.Add(this.Reg2);
             this.Name = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel15.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
