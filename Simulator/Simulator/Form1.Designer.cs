@@ -171,6 +171,7 @@ namespace Simulator
             this.panel75 = new System.Windows.Forms.Panel();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -336,7 +337,7 @@ namespace Simulator
             this.regLabel.AutoSize = true;
             this.regLabel.Location = new System.Drawing.Point(1116, 119);
             this.regLabel.Name = "regLabel";
-            this.regLabel.Size = new System.Drawing.Size(66, 16);
+            this.regLabel.Size = new System.Drawing.Size(68, 17);
             this.regLabel.TabIndex = 15;
             this.regLabel.Text = "Registers";
             // 
@@ -345,7 +346,7 @@ namespace Simulator
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(1210, 161);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(25, 16);
+            this.label1.Size = new System.Drawing.Size(26, 17);
             this.label1.TabIndex = 16;
             this.label1.Text = "R1";
             // 
@@ -354,7 +355,7 @@ namespace Simulator
             this.reg2Label.AutoSize = true;
             this.reg2Label.Location = new System.Drawing.Point(1210, 189);
             this.reg2Label.Name = "reg2Label";
-            this.reg2Label.Size = new System.Drawing.Size(25, 16);
+            this.reg2Label.Size = new System.Drawing.Size(26, 17);
             this.reg2Label.TabIndex = 17;
             this.reg2Label.Text = "R2";
             // 
@@ -363,7 +364,7 @@ namespace Simulator
             this.reg3Label.AutoSize = true;
             this.reg3Label.Location = new System.Drawing.Point(1210, 218);
             this.reg3Label.Name = "reg3Label";
-            this.reg3Label.Size = new System.Drawing.Size(25, 16);
+            this.reg3Label.Size = new System.Drawing.Size(26, 17);
             this.reg3Label.TabIndex = 18;
             this.reg3Label.Text = "R3";
             this.reg3Label.Click += new System.EventHandler(this.label3_Click);
@@ -373,7 +374,7 @@ namespace Simulator
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(1210, 247);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(25, 16);
+            this.label4.Size = new System.Drawing.Size(26, 17);
             this.label4.TabIndex = 19;
             this.label4.Text = "R4";
             // 
@@ -382,7 +383,7 @@ namespace Simulator
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(1210, 276);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(25, 16);
+            this.label5.Size = new System.Drawing.Size(26, 17);
             this.label5.TabIndex = 20;
             this.label5.Text = "R5";
             // 
@@ -391,7 +392,7 @@ namespace Simulator
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(1210, 305);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(25, 16);
+            this.label6.Size = new System.Drawing.Size(26, 17);
             this.label6.TabIndex = 21;
             this.label6.Text = "R6";
             // 
@@ -400,7 +401,7 @@ namespace Simulator
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(1210, 334);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(25, 16);
+            this.label7.Size = new System.Drawing.Size(26, 17);
             this.label7.TabIndex = 22;
             this.label7.Text = "R7";
             // 
@@ -409,7 +410,7 @@ namespace Simulator
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(1210, 363);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(25, 16);
+            this.label8.Size = new System.Drawing.Size(26, 17);
             this.label8.TabIndex = 23;
             this.label8.Text = "R8";
             // 
@@ -418,7 +419,7 @@ namespace Simulator
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(1210, 392);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(25, 16);
+            this.label9.Size = new System.Drawing.Size(26, 17);
             this.label9.TabIndex = 24;
             this.label9.Text = "R9";
             // 
@@ -427,7 +428,7 @@ namespace Simulator
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(1203, 421);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(32, 16);
+            this.label10.Size = new System.Drawing.Size(34, 17);
             this.label10.TabIndex = 25;
             this.label10.Text = "R10";
             // 
@@ -436,7 +437,7 @@ namespace Simulator
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(1203, 450);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(32, 16);
+            this.label11.Size = new System.Drawing.Size(34, 17);
             this.label11.TabIndex = 26;
             this.label11.Text = "R11";
             // 
@@ -445,7 +446,7 @@ namespace Simulator
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(1203, 479);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(32, 16);
+            this.label12.Size = new System.Drawing.Size(34, 17);
             this.label12.TabIndex = 27;
             this.label12.Text = "R12";
             // 
@@ -454,7 +455,7 @@ namespace Simulator
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(1203, 508);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(32, 16);
+            this.label13.Size = new System.Drawing.Size(34, 17);
             this.label13.TabIndex = 28;
             this.label13.Text = "R13";
             // 
@@ -463,7 +464,7 @@ namespace Simulator
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(1203, 537);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(32, 16);
+            this.label14.Size = new System.Drawing.Size(34, 17);
             this.label14.TabIndex = 29;
             this.label14.Text = "R14";
             this.label14.Click += new System.EventHandler(this.label14_Click);
@@ -473,7 +474,7 @@ namespace Simulator
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(1203, 566);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(32, 16);
+            this.label15.Size = new System.Drawing.Size(34, 17);
             this.label15.TabIndex = 30;
             this.label15.Text = "R15";
             // 
@@ -482,7 +483,7 @@ namespace Simulator
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(1203, 595);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(32, 16);
+            this.label16.Size = new System.Drawing.Size(34, 17);
             this.label16.TabIndex = 31;
             this.label16.Text = "R16";
             // 
@@ -637,7 +638,7 @@ namespace Simulator
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.Location = new System.Drawing.Point(34, 12);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(41, 13);
+            this.label24.Size = new System.Drawing.Size(50, 17);
             this.label24.TabIndex = 60;
             this.label24.Text = "RBUS";
             // 
@@ -664,7 +665,7 @@ namespace Simulator
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.Location = new System.Drawing.Point(568, 81);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(40, 13);
+            this.label25.Size = new System.Drawing.Size(49, 17);
             this.label25.TabIndex = 58;
             this.label25.Text = "SBUS";
             // 
@@ -674,7 +675,7 @@ namespace Simulator
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.Location = new System.Drawing.Point(512, 81);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(41, 13);
+            this.label26.Size = new System.Drawing.Size(50, 17);
             this.label26.TabIndex = 57;
             this.label26.Text = "DBUS";
             // 
@@ -708,7 +709,7 @@ namespace Simulator
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(1326, 97);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 13);
+            this.label2.Size = new System.Drawing.Size(44, 17);
             this.label2.TabIndex = 45;
             this.label2.Text = "FLAG";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -719,7 +720,7 @@ namespace Simulator
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.Location = new System.Drawing.Point(1339, 125);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(21, 13);
+            this.label17.Size = new System.Drawing.Size(26, 17);
             this.label17.TabIndex = 46;
             this.label17.Text = "SP";
             this.label17.Click += new System.EventHandler(this.label17_Click);
@@ -730,7 +731,7 @@ namespace Simulator
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.Location = new System.Drawing.Point(1345, 154);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(14, 13);
+            this.label18.Size = new System.Drawing.Size(17, 17);
             this.label18.TabIndex = 47;
             this.label18.Text = "T";
             this.label18.Click += new System.EventHandler(this.label18_Click);
@@ -741,7 +742,7 @@ namespace Simulator
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.Location = new System.Drawing.Point(1338, 183);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(21, 13);
+            this.label19.Size = new System.Drawing.Size(26, 17);
             this.label19.TabIndex = 48;
             this.label19.Text = "PC";
             this.label19.Click += new System.EventHandler(this.label19_Click);
@@ -752,7 +753,7 @@ namespace Simulator
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.Location = new System.Drawing.Point(1335, 212);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(25, 13);
+            this.label20.Size = new System.Drawing.Size(30, 17);
             this.label20.TabIndex = 49;
             this.label20.Text = "IVR";
             this.label20.Click += new System.EventHandler(this.label20_Click);
@@ -763,7 +764,7 @@ namespace Simulator
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.Location = new System.Drawing.Point(1330, 241);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(30, 13);
+            this.label21.Size = new System.Drawing.Size(37, 17);
             this.label21.TabIndex = 50;
             this.label21.Text = "ADR";
             this.label21.Click += new System.EventHandler(this.label21_Click);
@@ -774,7 +775,7 @@ namespace Simulator
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.Location = new System.Drawing.Point(1327, 270);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(32, 13);
+            this.label22.Size = new System.Drawing.Size(39, 17);
             this.label22.TabIndex = 51;
             this.label22.Text = "MDR";
             this.label22.Click += new System.EventHandler(this.label22_Click);
@@ -785,7 +786,7 @@ namespace Simulator
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.Location = new System.Drawing.Point(232, 481);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(18, 13);
+            this.label23.Size = new System.Drawing.Size(21, 17);
             this.label23.TabIndex = 52;
             this.label23.Text = "IR";
             this.label23.Click += new System.EventHandler(this.label23_Click);
@@ -796,7 +797,7 @@ namespace Simulator
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(218, 532);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.Size = new System.Drawing.Size(43, 17);
             this.label3.TabIndex = 53;
             this.label3.Text = "DEC I";
             this.label3.Click += new System.EventHandler(this.label3_Click_1);
@@ -1335,7 +1336,7 @@ namespace Simulator
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.Location = new System.Drawing.Point(432, 627);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(25, 13);
+            this.label27.Size = new System.Drawing.Size(31, 17);
             this.label27.TabIndex = 96;
             this.label27.Text = "GIS";
             // 
@@ -1345,7 +1346,7 @@ namespace Simulator
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.Location = new System.Drawing.Point(155, 627);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(21, 13);
+            this.label28.Size = new System.Drawing.Size(27, 17);
             this.label28.TabIndex = 97;
             this.label28.Text = "GF";
             // 
@@ -1423,13 +1424,24 @@ namespace Simulator
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label29.Location = new System.Drawing.Point(232, 715);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(22, 13);
+            this.label29.Size = new System.Drawing.Size(28, 17);
             this.label29.TabIndex = 101;
             this.label29.Text = "GT";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1177, 746);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(125, 26);
+            this.button1.TabIndex = 102;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(1534, 783);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label29);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.panel74);
@@ -1727,6 +1739,7 @@ namespace Simulator
         private System.Windows.Forms.Panel panel75;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Button button1;
     }
 }
 
