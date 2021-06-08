@@ -20,23 +20,19 @@ namespace Simulator
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            int i = 0;
+            while (i < 100)
+            {
+                dataGridView1.Rows.Add();
+
+                // Grab the new row!
+               dataGridView1.Rows[i].Cells["memoryLocation"].Value = i.ToString();
+                dataGridView1.Rows[i].Cells["valueAtLocation"].Value = i.ToString();
+                // Add the data
+                
+            }
         }
 
-        private void loadfileBTN_Click(object sender, EventArgs e)
-        {
-            Assembler.filePath = Assembler.loadFile();
-            List<List<string>> asmmatrix = Assembler.parseFile(Assembler.filePath);
-
-            Assembler.displayContentsOnTextbox(asmmatrix, textBox1);
-
-            assembleBTN.Enabled = true;
-        }
-
-        private void assembleBTN_Click(object sender, EventArgs e)
-        {
-            Assembler.assemble();
-        }
 
     }
 }
