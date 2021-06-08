@@ -12,21 +12,19 @@ namespace Simulator
 {
     public partial class Form1 : Form
     {
-
+        
         Simulator simulator;
-
-        List<TextBox> registers;
 
         public Form1()
         {
             simulator = new Simulator();
-            registers = new List<TextBox>();
+
             InitializeComponent();
             CenterToScreen();
 
-           foreach(var tb in this.Controls)
+            foreach (var tb in this.Controls)
             {
-                if(tb is TextBox)
+                if (tb is TextBox)
                 {
                     ((TextBox)tb).Text = "0";
                 }
@@ -34,143 +32,42 @@ namespace Simulator
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-    
-            
-        }
-
-        private void label3_Click(object sender, EventArgs e)
+        private void updateRegContents()
         {
 
-        }
+            Reg1.Text = simulator.registers[0].ToString();
+            Reg2.Text = simulator.registers[1].ToString();
+            Reg3.Text = simulator.registers[2].ToString();
+            Reg4.Text = simulator.registers[3].ToString();
+            Reg5.Text = simulator.registers[4].ToString();
+            Reg6.Text = simulator.registers[5].ToString();
+            Reg7.Text = simulator.registers[6].ToString();
+            Reg8.Text = simulator.registers[7].ToString();
+            Reg9.Text = simulator.registers[8].ToString();
+            Reg10.Text = simulator.registers[9].ToString();
+            Reg11.Text = simulator.registers[10].ToString();
+            Reg12.Text = simulator.registers[11].ToString();
+            Reg13.Text = simulator.registers[12].ToString();
+            Reg14.Text = simulator.registers[13].ToString();
+            Reg15.Text = simulator.registers[14].ToString();
+            Reg16.Text = simulator.registers[15].ToString();
 
-        private void label14_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label18_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RegPC_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RegMDR_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RegFlag_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label21_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RegSP_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label19_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RegIVR_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RegIR_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label17_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RegT_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label22_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RegADR_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RegDec_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label20_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label23_Click(object sender, EventArgs e)
-        {
+            RegFlag.Text = simulator.FLAG.ToString();
+            RegMDR.Text = simulator.MDR.ToString();
+            RegIVR.Text = simulator.IVR.ToString();
+            RegPC.Text = simulator.PC.ToString();
+            RegSP.Text = simulator.SP.ToString();
+            RegT.Text = simulator.T.ToString();
+            RegIR.Text = simulator.IR.ToString();
+            RegADR.Text = simulator.ADR.ToString();
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             simulator.impulseGen();
+            updateRegContents();
         }
-
-
-
-        //private void loadfileBTN_Click(object sender, EventArgs e)
-        //{
-        //    Assembler.filePath = Assembler.loadFile();
-        //    List<List<string>> asmmatrix = Assembler.parseFile(Assembler.filePath);
-
-        //    Assembler.displayContentsOnTextbox(asmmatrix, textBox1);
-
-        //    assembleBTN.Enabled = true;
-        //}
-
-        //private void assembleBTN_Click(object sender, EventArgs e)
-        //{
-        //    Assembler.assemble();
-        //}
-
-        //private void textBox1_TextChanged(object sender, EventArgs e)
-        //{
-
-        //}
 
     }
 }

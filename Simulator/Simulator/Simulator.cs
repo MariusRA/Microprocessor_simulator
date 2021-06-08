@@ -24,6 +24,8 @@ namespace Simulator
         public bool TINT, TIF, TOF, TEX;
         public int currentPhase = 1, currentImpulse = 1;
 
+        public string binaryFilePath;
+
         public Simulator()
         {
             registers = new List<ushort>();
@@ -32,7 +34,7 @@ namespace Simulator
                 registers.Add(0);
             }
            
-            loadFileToMemory(@"F:\Microprocessor_simulator\test.bin");
+            loadFileToMemory(StartForm.binaryFile);
 
             for (int i = 0; i < memoryLocations.Length; i += 2)
             {
