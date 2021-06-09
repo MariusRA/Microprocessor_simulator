@@ -54,6 +54,18 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="generalRegisters.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="generalRegisters.Designer.cs">
+      <DependentUpon>generalRegisters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="memory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="memory.Designer.cs">
+      <DependentUpon>memory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Simulator.cs" />
@@ -66,6 +78,12 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="generalRegisters.resx">
+      <DependentUpon>generalRegisters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="memory.resx">
+      <DependentUpon>memory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -74,6 +92,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="StartForm.resx">
       <DependentUpon>StartForm.cs</DependentUpon>
@@ -90,6 +109,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\genReg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\mem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\alu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\mux.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\bgc.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

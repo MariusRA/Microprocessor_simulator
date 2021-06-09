@@ -19,3 +19,6 @@ C:\Users\popa_\Desktop\Facultate\An3Sem2\ProiectMicroproc\Microprocessor_simulat
 C:\Users\popa_\Desktop\Facultate\An3Sem2\ProiectMicroproc\Microprocessor_simulator\Simulator\Simulator\obj\Debug\Simulator.exe
 C:\Users\popa_\Desktop\Facultate\An3Sem2\ProiectMicroproc\Microprocessor_simulator\Simulator\Simulator\obj\Debug\Simulator.pdb
 F:\Microprocessor_simulator\Simulator\Simulator\obj\Debug\Simulator.StartForm.resources
+C:\Users\popa_\Desktop\Facultate\An3Sem2\ProiectMicroproc\Microprocessor_simulator\Simulator\Simulator\obj\Debug\Simulator.StartForm.resources
+C:\Users\popa_\Desktop\Facultate\An3Sem2\ProiectMicroproc\Microprocessor_simulator\Simulator\Simulator\obj\Debug\Simulator.generalRegisters.resources
+C:\Users\popa_\Desktop\Facultate\An3Sem2\ProiectMicroproc\Microprocessor_simulator\Simulator\Simulator\obj\Debug\Simulator.memory.resources

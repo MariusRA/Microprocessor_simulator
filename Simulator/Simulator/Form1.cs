@@ -14,13 +14,22 @@ namespace Simulator
     {
         
         Simulator simulator;
+        generalRegisters genRegs;
+        memory mem;
 
         public Form1()
         {
             simulator = new Simulator();
-
+            genRegs = new generalRegisters();
+            mem = new memory();
             InitializeComponent();
             CenterToScreen();
+            genRegPB.Image = Properties.Resources.genReg;
+            memPB.Image = Properties.Resources.mem;
+            aluPB.Image = Properties.Resources.alu;
+            mux1PB.Image = Properties.Resources.mux;
+            mux2PB.Image = Properties.Resources.mux;
+            bgcPB.Image = Properties.Resources.bgc;
 
             foreach (var tb in this.Controls)
             {
@@ -35,22 +44,7 @@ namespace Simulator
         private void updateRegContents()
         {
 
-            Reg1.Text = simulator.registers[0].ToString();
-            Reg2.Text = simulator.registers[1].ToString();
-            Reg3.Text = simulator.registers[2].ToString();
-            Reg4.Text = simulator.registers[3].ToString();
-            Reg5.Text = simulator.registers[4].ToString();
-            Reg6.Text = simulator.registers[5].ToString();
-            Reg7.Text = simulator.registers[6].ToString();
-            Reg8.Text = simulator.registers[7].ToString();
-            Reg9.Text = simulator.registers[8].ToString();
-            Reg10.Text = simulator.registers[9].ToString();
-            Reg11.Text = simulator.registers[10].ToString();
-            Reg12.Text = simulator.registers[11].ToString();
-            Reg13.Text = simulator.registers[12].ToString();
-            Reg14.Text = simulator.registers[13].ToString();
-            Reg15.Text = simulator.registers[14].ToString();
-            Reg16.Text = simulator.registers[15].ToString();
+            
 
             RegFlag.Text = simulator.FLAG.ToString();
             RegMDR.Text = simulator.MDR.ToString();
@@ -67,7 +61,27 @@ namespace Simulator
         {
             simulator.impulseGen();
             updateRegContents();
+            genRegs.updateRegisisterText(simulator.registers);
+            if (mem != null)
+            {
+                mem.displayMemory(simulator.memoryLocations);
+            }
+               
         }
 
+        private void genRegPB_Click(object sender, EventArgs e)
+        {
+            genRegs.Show();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void memPB_Click(object sender, EventArgs e)
+        {
+            mem.Show();
+        }
     }
 }
