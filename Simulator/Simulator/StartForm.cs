@@ -19,6 +19,7 @@ namespace Simulator
         public StartForm()
         {
             InitializeComponent();
+            CenterToScreen();
             Assembler assembler = new Assembler();
             
         }
